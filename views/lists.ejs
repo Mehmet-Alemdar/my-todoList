@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>List | <%= listName %></title>
+
+    <link rel="stylesheet" href="/css/lists.css" />
+  </head>
+  <body>
+    <div name="divName" class="container">
+      <div class="head-container">
+        <h3><%= currentlyDate %></h3>
+        <h3 class="list-name"><%= listName %></h3>
+      </div>
+
+      <div class="middle-container">
+        <% for(var i = 0 ; i< newItems.length ; i++){ %>
+        <div class="item">
+          <input name="checkBox" id="checkWork" type="checkbox" value="true" />
+          <label> <%= newItems[i] %> </label>
+        </div>
+        <% } %>
+      </div>
+    </div>
+
+    <div class="bottom-container">
+      <form action="/lists" method="POST">
+        <input
+          class="input-work"
+          type="text"
+          name="newItem"
+          autocomplete="off"
+          placeholder="add work"
+        />
+        <br />
+        <button type="submit" class="add-button">+</button>
+      </form>
+      <br />
+    </div>
+  </body>
+</html>

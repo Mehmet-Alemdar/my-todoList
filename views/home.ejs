@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home | All List</title>
+
+    <link rel="stylesheet" href="/css/home.css" />
+  </head>
+  <body>
+    <div class="head-container">
+      <h3><%= dateHome %></h3>
+      <h3 id="a">All List</h3>
+
+      <button class="clear-button" onclick="location.href = '/delete'">
+        Clear All
+      </button>
+    </div>
+
+    <div class="container">
+      <% for(var i = 0; i < newWorks.length ; i++){%>
+      <button
+        type="submit"
+        class="work-container-button"
+        onclick="location.href = '/lists/<%=i%>'"
+      >
+        <%= newWorks[i].name %>
+      </button>
+      <%}%>
+    </div>
+
+    <div class="bottom-container">
+      <form action="/" method="POST">
+        <div class="input-div">
+          <input
+            id="in"
+            class="input-work"
+            type="text"
+            name="newWork"
+            autocomplete="off"
+            placeholder="add list"
+            maxlength="15"
+            onkeyup="myKeyPress(event)"
+          />
+          <span class="character-count" id="myText">15</span>
+          <br />
+          <button type="submit" class="add-button">+</button>
+        </div>
+      </form>
+    </div>
+    <script>
+      // input character count
+      function myKeyPress(e) {
+        var element = document.getElementById('in').value
+        if (element.length <= 15) {
+          var count = 15 - element.length
+          document.getElementById('myText').innerHTML = count
+        }
+      }
+    </script>
+  </body>
+</html>
